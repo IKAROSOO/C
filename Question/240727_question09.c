@@ -5,30 +5,18 @@ https://www.acmicpc.net/problem/5597
 #include <stdio.h>
 
 int main() {
-    int std[31], input[29];
-    int a = 0, b;
-
-    for(int i = 0; i < 30; i++) {
-        std[i] = i+1;
-    }
+    int std[31] = {0}, input[29], dont[3];
+    int a = 0;
 
     for(int i = 0; i < 28; i++) {
         scanf("%d", &input[i]);
-
-        for(int j = 0; j < 30; j++) {
-            if(std[j] == input[i])
-                std[j] = 0;
-        }
+        std[input[i]] = 1;
     }
 
-    int k=0;
-    while(a != 0) {
-        if(std[k] != 0)
-            a = k+1;
-        k++;
+    for(int i = 1; i < 30; i++) {
+        if(std[i] == 0)
+            printf("%d\n", i);
     }
-
-    printf("%d", a);
 
     return 0;
 }
